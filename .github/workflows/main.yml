@@ -48,25 +48,4 @@ jobs:
           severity: CRITICAL,HIGH
           ignore-unfixed: true
           format: table
-          exit-code: 0
-
-      - name: Docker Scout quickview
-        uses: docker/scout-action@v1
-        with:
-          command: quickview
-          image: pygoat:ci
-
-      - name: Docker Scout CVEs
-        uses: docker/scout-action@v1
-        with:
-          command: cves
-          image: pygoat:ci
-
-      - name: Docker recommendations
-        uses: docker/scout-action@v1
-        with:
-          command: recommendations
-          image: pygoat:ci
-
-      
-  
+          exit-code: 1
