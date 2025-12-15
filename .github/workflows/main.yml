@@ -28,7 +28,7 @@ jobs:
           path: bandit_report.json
 
   image_scan:
-    name: Run image scan via docker scout
+    name: Run container image scan
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
