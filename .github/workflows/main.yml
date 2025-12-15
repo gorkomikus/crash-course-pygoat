@@ -62,5 +62,11 @@ jobs:
           command: cves
           image: pygoat:ci
 
+      - name: Docker recommendations
+        uses: docker/scout-action@v1
+        with:
+          command: recommendations
+          image: pygoat:ci
+
       
   
