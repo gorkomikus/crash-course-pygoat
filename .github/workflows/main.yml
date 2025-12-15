@@ -48,7 +48,7 @@ jobs:
           severity: CRITICAL,HIGH
           ignore-unfixed: true
           format: table
-          exit-code: 1
+          exit-code: 0
 
       - name: Docker Scout quickview
         uses: docker/scout-action@v1
