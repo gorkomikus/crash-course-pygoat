@@ -45,6 +45,7 @@ jobs:
         if: always()
         with:
           image-ref: pygoat:ci${{ github.sha }}
+          vuln-type: os,library
           severity: CRITICAL,HIGH
           ignore-unfixed: true
           format: table
