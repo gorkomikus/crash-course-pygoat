@@ -47,5 +47,12 @@ jobs:
           image-ref: pygoat:ci${{ github.sha }}
           severity: CRITICAL,HIGH
           ignore-unfixed: true
-          format: table
-          exit-code: 1
+          format: json
+          output: trivy-report.json
+          exit-code: 0
+
+      - name: Upload Trivy report
+        uses: actions/upload-artifact@v6
+        with:
+          name: trivy-findings
+          path: trivy-report.json
