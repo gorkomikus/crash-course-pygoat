@@ -18,14 +18,13 @@ jobs:
           pip install bandit
       - name: Run bandit scan
         run: |
-          bandit -r . -ll -ii -o bandit_report.json -f json
-      
-      - name: Upload bandit report
-        uses: actions/upload-artifact@v6
+          bandit -r . -ll -ii -f sarif -o bandit-results.sarif
+
+      - name: Upload Bandit SARIF to code scanning
+        uses: github/codeql-action/upload-sarif@v3
         if: always()
         with:
-          name: bandit-findings
-          path: bandit_report.json
+          sarif_file: bandit-results.sarif
 
   image_scan:
     name: Run container image scan
