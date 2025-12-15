@@ -52,6 +52,25 @@ jobs:
           version: latest
           exit-code: 1
 
+      - name: Generate Trivy SARIF for code scanning
+        uses: aquasecurity/trivy-action@0.33.1
+        if: always()
+        with:
+          image-ref: pygoat:ci${{ github.sha }}
+          vuln-type: os,library
+          severity: CRITICAL,HIGH
+          ignore-unfixed: true
+          format: sarif
+          output: trivy-results.sarif
+          version: latest
+          exit-code: 0
+
+      - name: Upload Trivy SARIF to code scanning
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: trivy-results.sarif
+
       # - name: Upload Trivy report
       #   uses: actions/upload-artifact@v6
       #   with:
