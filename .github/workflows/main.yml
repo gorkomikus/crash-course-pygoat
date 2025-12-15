@@ -48,7 +48,8 @@ jobs:
           vuln-type: os,library
           severity: CRITICAL,HIGH
           ignore-unfixed: true
-          format: table
+          format: template
+          template: "@/./.github/trivy/vulns-only.tpl"
           exit-code: 1
 
       # - name: Upload Trivy report
