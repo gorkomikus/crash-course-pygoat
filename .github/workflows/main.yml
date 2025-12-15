@@ -71,8 +71,9 @@ jobs:
         with:
           sarif_file: trivy-results.sarif
 
-      # - name: Upload Trivy report
-      #   uses: actions/upload-artifact@v6
-      #   with:
-      #     name: trivy-findings
-      #     path: trivy-report.json
+      - name: Upload Trivy report
+        uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: trivy-results
+          path: trivy-results.sarif
